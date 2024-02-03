@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure flex layout */
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Limit table width and allow it to scroll horizontally if needed */
+.table-auto {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Ensure the chart is not wider than its container */
+.w-full {
+  width: 100%;
+}
+
+/* Adjust chart height and add overflow */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Add margin between chart and table */
+.md\:w-1\/2 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+/* Apply responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .md\:w-1\/2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
