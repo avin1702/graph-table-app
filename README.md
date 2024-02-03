@@ -7,6 +7,9 @@
 
 .There is a search bar which filters the product list as per `title` and `description`
 
+
+# Run the app
+
 clone the app `git clone https://github.com/avin1702/graph-table-app.git`
 
 install dependencies `npm i`
