@@ -85,10 +85,9 @@ const DataTableDynamic: React.FC = () => {
   };
 
   const handleItemsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setItemsPerPage(parseInt(e.target.value)); // Convert value to number
+    setItemsPerPage(parseInt(e.target.value));
   };
 
-  // Dynamic dropdown options
   const itemsPerPageOptions = [8, 10, 15, 20];
 
   return (
