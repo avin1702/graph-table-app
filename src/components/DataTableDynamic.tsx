@@ -88,7 +88,7 @@ const DataTableDynamic: React.FC = () => {
     setItemsPerPage(parseInt(e.target.value));
   };
 
-  const itemsPerPageOptions = [8, 10, 15, 20];
+  const itemsPerPageOptions = [5, 10, 15, 20];
 
   return (
     <div className="container mx-auto">
@@ -153,7 +153,7 @@ const DataTableDynamic: React.FC = () => {
               </table>
             </div>
             <div className="mt-4">
-              <ul className="overflow-auto flex justify-center">
+            <ul className={`overflow-auto flex ${Math.ceil(totalValues / itemsPerPage) > 10 ? 'justify-normal' : 'justify-center'}`}>
                 {Array.from({ length: Math.ceil( totalValues / itemsPerPage) }).map((_, index) => (
                   <li
                     key={index}
