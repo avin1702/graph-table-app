@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types/product';
 
-const SearchBar: React.FC<{ products: Product[], setFilteredProducts: React.Dispatch<React.SetStateAction<Product[]>> }> = ({ products, setFilteredProducts }) => {
+const SearchBar: React.FC<{ products: Product[], setFilteredProducts: React.Dispatch<React.SetStateAction<Product[]>>, itemsPerPage: number }> = ({ products, setFilteredProducts, itemsPerPage }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,7 +13,7 @@ const SearchBar: React.FC<{ products: Product[], setFilteredProducts: React.Disp
     ));
     setFilteredProducts(filteredProducts);
   }else{
-    setFilteredProducts(products.slice(0,10))
+    // setFilteredProducts(products.slice(0, itemsPerPage))
   };
 }
 

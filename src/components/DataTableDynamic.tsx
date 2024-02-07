@@ -12,6 +12,7 @@ const DataTableDynamic: React.FC = () => {
   const [selectedRows, setSelectedRows] = useState<SelectedRows>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [totalValues, setTotalValues] = useState<number>(0);
+  const [previousSelectedRows, setPreviousSelectedRows] = useState<SelectedRows>([]);
 
   const isRowChecked = (productId: number) => {
     return selectedRows.includes(productId);
@@ -32,6 +33,7 @@ const DataTableDynamic: React.FC = () => {
 
         setSelectedRows(val.slice(0, 5).map((product: Product) => product.id));
         setFilteredProducts(val.slice(0, itemsPerPage));
+        setPreviousSelectedRows(val.slice(0, 5).map((product: Product) => product.id));
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -78,9 +80,10 @@ const DataTableDynamic: React.FC = () => {
   const handleFilteredProducts: any = (filteredProducts: Product[]) => {
     setFilteredProducts(filteredProducts);
     if (filteredProducts.length > 0) {
-      // setSelectedRows(filteredProducts.slice(0, 5).map(product => product.id));
+      // const selectedIds = filteredProducts.slice(0, 5).map(product => product.id);
+      // setSelectedRows(selectedIds);
     } else {
-      resetSelection();
+      setSelectedRows(previousSelectedRows);
     }
   };
 
@@ -92,7 +95,7 @@ const DataTableDynamic: React.FC = () => {
 
   return (
     <div className="container mx-auto">
-      <SearchBar products={products} setFilteredProducts={handleFilteredProducts} />
+      <SearchBar products={products} setFilteredProducts={handleFilteredProducts} itemsPerPage={itemsPerPage} />
       <div className="flex flex-col md:flex-row">
         <div className="overflow-hidden w-1/2 md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0">
           <Chart numericValues={selectedRows.map((rowId) => products.find((product) => product.id === rowId))} />
