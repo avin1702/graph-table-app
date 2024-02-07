@@ -7,11 +7,15 @@ const SearchBar: React.FC<{ products: Product[], setFilteredProducts: React.Disp
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
+    if(term.length>0){
     const filteredProducts = products.filter(product => (
       product.title.toLowerCase().includes(term) || product.description.toLowerCase().includes(term)
     ));
     setFilteredProducts(filteredProducts);
+  }else{
+    setFilteredProducts(products.slice(0,10))
   };
+}
 
   return (
     <div className="flex justify-center my-4">

@@ -7,7 +7,7 @@ interface ChartProps {
 
 const Chart: React.FC<ChartProps> = ({ numericValues }) => {
 
-  console.log(numericValues)
+  // console.log(numericValues)
   const labels = numericValues.map(value => value.title);
   const data = numericValues.map(value => value.stock);
   
@@ -23,14 +23,14 @@ const Chart: React.FC<ChartProps> = ({ numericValues }) => {
   ];
 
   
-  const layout = {
+  const layout:any = {
     xaxis: {
       title: 'Product',
     },
     yaxis: {
       title: 'Stock',
     },
-    width: 400, 
+    width: "50%", 
     height: 300,
   };
   return (
