@@ -21,7 +21,7 @@ const DataTableDynamic: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`https://dummyjson.com/products/?limit=${itemsPerPage}`);
+        const response = await axios.get(`https://dummyjson.com/products/`);
         const val: any = response.data.products;
         setTotalValues(response.data.total);
         setProducts(val);
